@@ -1,0 +1,7 @@
+C:\Bo\UWS\Internet Scripting\CourseworkTwo\EntitiesLib\bin\Debug\netstandard2.0\EntitiesLib.deps.json
+C:\Bo\UWS\Internet Scripting\CourseworkTwo\EntitiesLib\bin\Debug\netstandard2.0\EntitiesLib.dll
+C:\Bo\UWS\Internet Scripting\CourseworkTwo\EntitiesLib\bin\Debug\netstandard2.0\EntitiesLib.pdb
+C:\Bo\UWS\Internet Scripting\CourseworkTwo\EntitiesLib\obj\Debug\netstandard2.0\EntitiesLib.AssemblyInfoInputs.cache
+C:\Bo\UWS\Internet Scripting\CourseworkTwo\EntitiesLib\obj\Debug\netstandard2.0\EntitiesLib.AssemblyInfo.cs
+C:\Bo\UWS\Internet Scripting\CourseworkTwo\EntitiesLib\obj\Debug\netstandard2.0\EntitiesLib.dll
+C:\Bo\UWS\Internet Scripting\CourseworkTwo\EntitiesLib\obj\Debug\netstandard2.0\EntitiesLib.pdb
