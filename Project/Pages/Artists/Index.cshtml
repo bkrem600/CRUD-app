@@ -1,0 +1,85 @@
+@page
+@using UWS.Shared
+@model Project.Pages.ArtistsModel
+@{
+    ViewData["Title"] = "Artists";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Artists</title>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../Index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Albums/Index">Albums</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Artists/Index">Artists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Tracks/Index">Tracks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../MediaTypes/Index">Media Types</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Genres/Index">Genres</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h4>Add new artist</h4>
+  <div class="row">
+    <form method="POST">
+      <label for="Artist.Name">Enter a name for a new Artist:&nbsp;</label> 
+      <div><input asp-for="Artist.Name"/></div>
+      <br />
+      <div><input class="btn btn-primary" type="submit" /></div>
+      <br />
+    </form>
+  </div>
+  <form asp-page="./Index" method="get">
+  <div class="form-actions no-color">
+    <p>
+      Find by name:
+      <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+      <input type="submit" value="Search" class="btn btn-primary" /> |
+      <a asp-page="./Index">Back to full List</a>
+    </p>
+  </div>
+  </form>
+  <h2 class="display-2">Artists</h2>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>@Html.DisplayNameFor(model => model.Artists[0].ArtistId)</th>
+          <th><a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+          @Html.DisplayNameFor(model => model.Artists[0].Name)</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (Artist item in Model.Artists)
+        {
+          <tr>
+            <td>@item.ArtistId</td>
+            <td>@item.Name</td>
+            <td>
+              <a asp-page="./Details" asp-route-ID="@item.ArtistId">Details</a> | 
+              <a asp-page="./Update" asp-route-ID="@item.ArtistId">Update</a> 
+            </td>
+          </tr>  
+        }
+      </tbody>
+    </table>
+  </div>
+</html>

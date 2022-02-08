@@ -1,0 +1,42 @@
+@page
+@using UWS.Shared
+@model Project.Pages.AlbumTracksModel
+@{
+    ViewData["Title"] = "Album Tracks - " + Model.Album.Title;
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Album Tracks</title>
+    </head>
+<h2>Album Tracks</h2>
+<hr />
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>Track ID</th>
+            <th>Name</th>
+            <th>Album ID</th>
+            <th>Media Type ID</th>
+            <th>Genre ID</th>
+            <th>Composer</th>
+            <th>Milliseconds</th>
+            <th>Bytes</th>
+            <th>Unit Price</th>
+        </tr>
+        @foreach (var item in Model.Album.Tracks)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Composer)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+</html>

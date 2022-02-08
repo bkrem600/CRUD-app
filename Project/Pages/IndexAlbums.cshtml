@@ -1,0 +1,80 @@
+@page
+@model Project.Pages.AlbumsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Albums";
+}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Albums</title>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../Index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexAlbums">Albums</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexArtists">Artists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexTracks">Tracks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexMediaTypes">Media Types</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="IndexGenres">Genres</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <a asp-page="Create">Create New</a>
+  <form asp-page="Index" method="get">
+  <div class="form-actions no-color">
+    <p>
+      Find by title:
+      <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+      <input type="submit" value="Search" class="btn btn-primary" /> |
+      <a asp-page="Index">Back to full List</a>
+    </p>
+  </div>
+  </form>
+  <h2 class="display-2">Albums</h2>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <a asp-page="Index" asp-route-sortOrder="@Model.TitleSort">
+            @Html.DisplayNameFor(model => model.Albums[0].Title)</a>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (int c = 0; c < Model.Albums.Count; c++)
+        {
+          <tr>
+            <td>@Model.Albums[c].Title</td>
+            <td>
+              <a asp-page="DetailsAlbum" asp-route-ID="@Model.Albums[c].AlbumId">Details</a> |
+              <a asp-page="DeleteAlbum" asp-route-ID="@Model.Albums[c].AlbumId" 
+              onclick="return confirm('Are you sure? You will be redirected to another page.')">Delete</a> |
+              <a asp-page="UpdateAlbum" asp-route-ID="@Model.Albums[c].AlbumId">Update</a>
+            </td>
+          </tr> 
+        }
+      </tbody>
+    </table>
+  </div>
+</html>
+
+
+

@@ -1,0 +1,38 @@
+@page
+@model Project.Pages.UpdateArtistModel
+@{
+    ViewData["Title"] = "Update Artist - " + Model.Artist.Name;
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Update Artist</title>
+    </head>
+    <h4>Update an Artist</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Artist.ArtistId" />
+                <div class="form-group">
+                    <label asp-for="Artist.ArtistId" class="control-label"></label>
+                    <div>@Html.DisplayFor(model => model.Artist.ArtistId)</div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Artist.Name" class="control-label"></label>
+                    <input asp-for="Artist.Name" class="form-control" />
+                    <span asp-validation-for="Artist.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+</html>

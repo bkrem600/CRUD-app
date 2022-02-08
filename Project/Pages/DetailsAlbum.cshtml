@@ -1,0 +1,86 @@
+@page
+@using UWS.Shared
+@model Project.Pages.AlbumDetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Album Details - " + Model.Album.Title;
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Album Details</title>
+    </head>
+    <h2>Album Details</h2>
+    <hr />
+    <div>
+        <dl class="dl-horizontal">
+            <dt>Album ID</dt>
+            <dd>@Html.DisplayFor(model => model.Album.AlbumId)</dd>
+            <dt>Title</dt>
+            <dd>@Html.DisplayFor(model => model.Album.Title)</dd>
+            <dt>Artist ID</dt>
+            <dd>@Html.DisplayFor(model => model.Album.ArtistId)</dd>
+            <dt>Artist</dt>
+            <dd>@Html.DisplayFor(model => model.Album.Artist.Name)</dd>
+            <dt>Tracks</dt>
+            <dd>
+                <table class="table">
+                    <tr>
+                        <th>Track ID</th>
+                        <th>Name</th>
+                        <th>Album</th>
+                        <th>Media Type</th>
+                        <th>Genre</th>
+                        <th>Composer</th>
+                        <th>Milliseconds</th>
+                        <th>Bytes</th>
+                        <th>Unit Price</th>
+                    </tr>
+                    @foreach (var item in Model.Album.Tracks)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TrackId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Album.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Media_Type.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Genre.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Composer)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Milliseconds)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bytes)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            <td>
+                                <a asp-page="./UpdateAlbumTrack" asp-route-ID="@item.TrackId">Update</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+</html>
+    
+
+
+
+

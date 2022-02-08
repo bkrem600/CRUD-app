@@ -1,0 +1,35 @@
+@page
+@using UWS.Shared
+@model Project.Pages.CreateAlbumModel
+@{
+    ViewData["Title"] = "Add Album";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add Album</title>
+    </head>
+    <h4>Add new album</h4>
+    <div class="row">
+        <form method="POST">
+            <div class="form-group">
+                <label asp-for="Album.Title" class="control-label">Enter a title for a new Album:&nbsp;</label> 
+                <input asp-for="Album.Title" class="form-control"/>
+            </div>
+            <div class="form-group">
+                    <label asp-for="Album.Artist" class="control-label"></label>
+                    <select asp-for="Album.ArtistId" class="form-control" asp-items="@Model.ArtistNameSL">
+                        <option value="">-- Select Artist Name --</option>
+                    </select>
+            </div>
+            <br />
+            <div><input class="btn btn-primary" type="submit" /></div>
+            <br />
+            <div>
+                <a asp-page="./Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</html>

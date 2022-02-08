@@ -1,0 +1,34 @@
+@page
+@functions
+{
+    public string DayName { get; set; }
+    public void OnGet()
+    {
+        ViewData["Title"] = "Chinook Website";
+        Model.DayName = DateTime.Now.ToString("dddd");
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Chinook Database</title>
+    </head>
+    <div class="jumbotron">
+        <h1 class="display-3">Welcome to Chinook Database!</h1>
+        <p>It's @Model.DayName! Here you can: </p>
+        <ul>
+            <li>View, sort, find, add, update and delete albums</li>
+            <li>View, sort, find, add and update artists</li>
+            <li>View, sort, find, add and update tracks</li>
+            <li>View media types</li>
+            <li>View genres</li>
+        </ul>
+        <p>
+            <a class="btn btn-primary" href="IndexAlbums">View Albums</a>
+            <a class="btn btn-primary" href="Artists/Index">View Artists</a>
+            <a class="btn btn-primary" href="Tracks/Index">View Tracks</a>
+            <a class="btn btn-primary" href="MediaTypes/Index">View Media Types</a>
+            <a class="btn btn-primary" href="IndexGenres">View Genres</a>
+        </p>
+    </div>
+</html>

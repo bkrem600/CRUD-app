@@ -1,0 +1,60 @@
+@page
+@using UWS.Shared
+@model Project.Pages.GenresModel
+@{
+    ViewData["Title"] = "Genres";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Genres</title>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="Index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexAlbums">Albums</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexArtists">Artists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexTracks">Tracks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexMediaTypes">Media Types</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="IndexGenres">Genres</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h2 class="display-2">Genres</h2>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Genre ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model.Genres)
+        {
+          <tr>
+            <td>@item.GenreId</td>
+            <td>@item.Name</td>
+          </tr>  
+        }
+      </tbody>
+    </table>
+  </div>
+</html>

@@ -1,0 +1,111 @@
+@page
+@model Project.Pages.TracksModel
+@{
+    ViewData["Title"] = "Tracks";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tracks</title>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../Index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Albums/Index">Albums</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Artists/Index">Artists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Tracks/Index">Tracks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../MediaTypes/Index">Media Types</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Genres/Index">Genres</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <a asp-page="Create">Create New</a>
+  <form asp-page="./Index" method="get">
+  <div class="form-actions no-color">
+    <p>
+      Find by track name, album, media, genre or composer: <br />
+      <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+      <input type="submit" value="Search" class="btn btn-primary" /> |
+      <a asp-page="./Index">Back to full List</a>
+    </p>
+  </div>
+  </form>
+  <h2 class="display-2">Tracks</h2>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.IdSort">Track ID</a>
+          </th>
+          <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+            @Html.DisplayNameFor(model => model.Tracks[0].Name)
+            </a>
+          </th>
+          <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.AlbumSort">Album</a>
+          </th>
+          <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.MediaSort">Media Type</a>
+          </th>
+          <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.GenreSort">Genre</a>
+          </th>
+          <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.ComposerSort">
+            @Html.DisplayNameFor(model => model.Tracks[0].Composer)
+            </a>
+          </th>
+          <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.MillisecondsSort">
+            @Html.DisplayNameFor(model => model.Tracks[0].Milliseconds)
+            </a>
+          </th>
+          <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.BytesSort">
+            @Html.DisplayNameFor(model => model.Tracks[0].Bytes)
+            </a>
+          </th>
+          <th>Unit Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model.Tracks)
+        {
+          <tr>
+            <td>@item.TrackId</td>
+            <td>@item.Name</td>
+            <td>@item.Album.Title</td>
+            <td>@item.Media_Type.Name</td>
+            <td>@item.Genre.Name</td>
+            <td>@item.Composer</td>
+            <td>@item.Milliseconds</td>
+            <td>@item.Bytes</td>
+            <td>@item.UnitPrice</td>
+            <td>
+              <a asp-page="./Update" asp-route-ID="@item.TrackId">Update</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</html>

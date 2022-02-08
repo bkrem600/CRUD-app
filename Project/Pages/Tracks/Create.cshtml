@@ -1,0 +1,65 @@
+@page
+@model Project.Pages.CreateTrackModel
+@{
+    ViewData["Title"] = "Add Track";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add Track</title>
+    </head>
+    <h4>Add new track</h4>
+    <div class="row">
+        <form method="POST">
+            <div class="form-group">
+                <label asp-for="Track.Name" class="control-label">Enter a name for a new Track:&nbsp;</label>
+                <input asp-for="Track.Name" class="form-control"/> 
+            </div>
+            <div class="form-group">
+                <label asp-for="Track.Album" class="control-label"></label>
+                <select asp-for="Track.AlbumId" class="form-control" asp-items="@Model.AlbumTitleSL">
+                    <option value="">-- Select Album Title --</option>
+                </select>
+                <span asp-validation-for="Track.AlbumId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Track.Media_Type" class="control-label"></label>
+                <select asp-for="Track.MediaTypeId" class="form-control" asp-items="@Model.MediaTypeNameSL">
+                    <option value="">-- Select Media Type --</option>
+                </select>
+                <span asp-validation-for="Track.MediaTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Track.Genre" class="control-label"></label>
+                <select asp-for="Track.GenreId" class="form-control" asp-items="@Model.GenreNameSL">
+                    <option value="">-- Select Genre --</option>
+                </select>
+                <span asp-validation-for="Track.GenreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Track.Composer" class="control-label">Enter Composer(s):&nbsp;</label>
+                <input asp-for="Track.Composer" type="text" class="form-control"/> 
+            </div>
+            <div class="form-group">
+                <label asp-for="Track.Milliseconds" class="control-label">Enter Milliseconds:&nbsp;</label>
+                <input asp-for="Track.Milliseconds" type="number" min="1" class="form-control"/> 
+            </div>
+            <div class="form-group">
+                <label asp-for="Track.Bytes" class="control-label">Enter Bytes:&nbsp;</label>
+                <input asp-for="Track.Bytes" type="number" min="1" class="form-control"/> 
+            </div>
+            <div class="form-group">
+                <label asp-for="Track.UnitPrice" class="control-label">Enter Price:&nbsp;</label>
+                <input asp-for="Track.UnitPrice" type="number" min="0.00" max="100.00" step="0.01" class="form-control"/> 
+            </div>
+            <br />
+            <div><input class="btn btn-primary" type="submit" /></div>
+            <br />
+            <div>
+                <a asp-page="./Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</html>
